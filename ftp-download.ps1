@@ -1,12 +1,16 @@
  # Config
- $Username = $args[0]
- $Password = $args[1]
- $RemoteFile = $args[2]
- $LocalFile = $args[3]
+param(
+  #[Parameter(Mandatory=$true)][string]$Username,
+  #[Parameter(Mandatory=$true)][string]$Password,
+  [Parameter(Mandatory=$true)][string]$RemoteFile,
+  [Parameter(Mandatory=$true)][string]$LocalFile
+ )
+
+
 
  # Create a FTPWebRequest
  $FTPRequest = [System.Net.FtpWebRequest]::Create($RemoteFile)
- $FTPRequest.Credentials = New-Object System.Net.NetworkCredential($Username,$Password)
+ #$FTPRequest.Credentials = New-Object System.Net.NetworkCredential($Username,$Password)
  $FTPRequest.Method = [System.Net.WebRequestMethods+Ftp]::DownloadFile
  $FTPRequest.UseBinary = $true
  $FTPRequest.KeepAlive = $false
