@@ -7,7 +7,6 @@ param(
  )
 
 
-
  # Create a FTPWebRequest
  $FTPRequest = [System.Net.FtpWebRequest]::Create($RemoteFile)
  #$FTPRequest.Credentials = New-Object System.Net.NetworkCredential($Username,$Password)
@@ -15,7 +14,7 @@ param(
  $FTPRequest.UseBinary = $true
  $FTPRequest.KeepAlive = $false
  $FTPRequest.Timeout = 3000
- $FTPRequest.EnableSsl = $true
+ #$FTPRequest.EnableSsl = $true
  Write-Host "Getting Response"
  # Send the ftp request
  $FTPResponse = $FTPRequest.GetResponse()
