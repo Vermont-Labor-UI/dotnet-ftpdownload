@@ -14,6 +14,7 @@ param(
  $FTPRequest.UseBinary = $true
  $FTPRequest.KeepAlive = $false
  $FTPRequest.Timeout = 3000
+ $FTPRequest.UsePassive = $True
  #$FTPRequest.EnableSsl = $true
  Write-Host "Getting Response"
  # Send the ftp request
