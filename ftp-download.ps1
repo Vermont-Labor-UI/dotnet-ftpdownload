@@ -33,12 +33,7 @@ if($FTPResponse -eq $null)
    Write-Host "Response Stream Is Null"
    exit 1;
  }
- # Create the target file on the local system and the download buffer
- $LocalFileFile = New-Object IO.FileStream ($LocalFile,[IO.FileMode]::Create)
- [byte[]]$ReadBuffer = New-Object byte[] 1024
- # Loop through the download
- 	do {
- 		$ReadLength = $ResponseStream.Read($ReadBuffer,0,1024)
- 		$LocalFileFile.Write($ReadBuffer,0,$ReadLength)
- 	}
- 	while ($ReadLength -ne 0)
+ #Write stream to local file
+ 
+ $reader = New-Object System.IO.StreamReader $ResponseStream
+ $reader.ReadToEnd() | Out-File $LocalFile
